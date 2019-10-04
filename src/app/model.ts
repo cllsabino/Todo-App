@@ -9,9 +9,13 @@ export class Model{
 export class TodoItem{
     action;
     done;
-    constructor(action, done){
+    priority;
+    data: Date;
+    constructor(action, done, priority, data){
         this.action=action;
         this.done=done;
+        this.priority=priority;
+        this.data=data;
     }
 
 }

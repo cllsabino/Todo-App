@@ -13,12 +13,21 @@ export class AppComponent {
   getTodoItems(){
     return this.model.items.filter(item => !item.done);
   }
-  addItem(newItem){
+  addItem(newItem, priority, data){
     if(newItem != ""){
-      this.model.items.push(new TodoItem(newItem, false));
+      this.model.items.push(new TodoItem(newItem, false, priority, data));
     }
+    this.model.items.sort((a: TodoItem, b: TodoItem) => {
+       return +new Date(a.data) - +new Date(b.data);
+    })
   }
+
   getTodoItemsFeitos(){
     return this.model.items.filter(item => item.done);
     }
+  getAltapriority(){
+    if(this.model.items.priority.equals("Alta")){
+      return this.model.items.priority;
+    }
+  }
 }
